@@ -1,0 +1,33 @@
+---
+title: "Top ten ice cream bars in Stockholm"
+author: "Jonas Rafi"
+date: "12 juni 2018"
+output: html_document
+---
+
+
+Green markers indicate where I have been, red markers indiciate where I have not (yet) been.
+
+
+
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+
+library(leaflet)
+
+places <- data.frame(label = c("Fryst", "Scarfo", "Nordic Fauna", "King Scoopa", "Gelateria Italiana", "Eataly", "Taverna Brillo", "Snö", "Stikki Nikki", "Lundbergs Konditori"),
+                     lat = c(59.3383222, 59.3239557, 59.35687739999999, 59.31575509999999, 59.33237419999999, 59.33451969999999, 59.3366998, 59.34077569999999, 59.3391663, 59.31597129999999),
+                     long = c(18.024855500000058, 17.956328900000017, 18.05512650000003, 18.03660560000003, 18.029748100000006, 18.072491000000014, 18.07359680000002, 18.04180569999994, 18.03782209999997, 18.010374899999988),
+                     color = c("Red", "Green", "Red", "Red", "Green", rep("Red", 5))
+                     )
+
+places %>%
+        leaflet() %>%
+        addTiles() %>%
+        addCircleMarkers(label = ~label, color = ~color)
+        
+```
+
+
+
+Top ten according to [this article](https://www.dn.se/pa-stan/ata-ute/har-ar-stockholms-basta-glassbarer/).
+
